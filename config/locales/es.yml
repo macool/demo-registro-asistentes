@@ -253,6 +253,7 @@
       asistente:
         direccion: Dirección
         telefono: Teléfono
+        cedula: Cédula
 
   actions:
     new: "Nuevo"
