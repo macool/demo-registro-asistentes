@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Asistentes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Correo</th>
+      <th>Fecha nacimiento</th>
+      <th>Cedula</th>
+      <th>Dirección</th>
+      <th>Teléfono</th>
+      <th>Forma pago</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @asistentes.each do |asistente| %>
+      <tr>
+        <td><%= asistente.nombres %></td>
+        <td><%= asistente.apellidos %></td>
+        <td><%= mail_to asistente.correo %></td>
+        <td><%= asistente.fecha_nacimiento %></td>
+        <td><%= asistente.cedula %></td>
+        <td><%= asistente.direccion %></td>
+        <td><%= link_to asistente.telefono, "tel:#{asistente.telefono}" %></td>
+        <td><%= asistente.forma_pago %></td>
+        <td><%= link_to 'Editar', edit_asistente_path(asistente) %></td>
+        <td><%= link_to 'Eliminar', asistente, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Asistente', new_asistente_path %>

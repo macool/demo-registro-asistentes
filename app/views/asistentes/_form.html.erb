@@ -1,0 +1,50 @@
+<%= form_for(@asistente) do |f| %>
+  <% if @asistente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@asistente.errors.count, "error", "errores") %></h2>
+
+      <ul>
+      <% @asistente.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombres %>
+    <%= f.text_field :nombres %>
+  </div>
+  <div class="field">
+    <%= f.label :apellidos %>
+    <%= f.text_field :apellidos %>
+  </div>
+  <div class="field">
+    <%= f.label :correo %>
+    <%= f.email_field :correo %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_nacimiento %>
+    <%= f.date_select :fecha_nacimiento,
+                      start_year: Date.today.year - 100 %>
+  </div>
+  <div class="field">
+    <%= f.label :cedula %>
+    <%= f.text_field :cedula %>
+  </div>
+  <div class="field">
+    <%= f.label :direccion %>
+    <%= f.text_field :direccion %>
+  </div>
+  <div class="field">
+    <%= f.label :telefono %>
+    <%= f.phone_field :telefono %>
+  </div>
+  <div class="field">
+    <%= f.label :forma_pago %>
+    <%= f.select :forma_pago, Asistente::FORMAS_PAGO %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
